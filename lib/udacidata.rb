@@ -21,4 +21,10 @@ class Udacidata
     end
     products
   end
+
+  def self.first
+    first_row = CSV.open(CSV_FILE, 'rb', headers: true, &:first)
+    new(id: first_row['id'], brand: first_row['brand'],
+        name: first_row['product'], price: first_row['price'])
+  end
 end
