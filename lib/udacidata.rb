@@ -16,8 +16,8 @@ class Udacidata
   def self.all
     products = []
     CSV.foreach(CSV_FILE, headers: true) do |row|
-      products << new(id: row[:id], brand: row[:brand], name: row[:name],
-                      price: row[:price])
+      products << new(id: row['id'], brand: row['brand'], name: row['product'],
+                      price: row['price'])
     end
     products
   end
