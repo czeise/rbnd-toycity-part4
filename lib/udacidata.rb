@@ -32,4 +32,10 @@ class Udacidata
   def self.last(*n)
     n[0] ? all.last(n[0]) : all.last
   end
+
+  def self.find(id)
+    all.find do |product|
+      product.id == id
+    end
+  end
 end
