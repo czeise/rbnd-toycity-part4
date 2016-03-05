@@ -28,4 +28,8 @@ class Udacidata
   def self.first(*n)
     n[0] ? all.first(n[0]) : all.first
   end
+
+  def self.last(*n)
+    n[0] ? all.last(n[0]) : all.last
+  end
 end
