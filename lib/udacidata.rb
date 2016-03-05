@@ -40,8 +40,12 @@ class Udacidata
   end
 
   def self.destroy(id)
+    destroyed_product = find(id)
+
     updated_products = all.delete_if { |product| product.id == id }
     rewrite_csv(updated_products)
+
+    destroyed_product
   end
 
   def self.rewrite_csv(products)
