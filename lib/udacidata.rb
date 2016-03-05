@@ -5,6 +5,8 @@ require 'csv'
 class Udacidata
   CSV_FILE = File.dirname(__FILE__) + '/../data/data.csv'
 
+  # TODO: Update method to check for existing id. See @david's comment in
+  # #toycity4
   def self.create(options = {})
     product = Product.new(options)
     CSV.open(CSV_FILE, 'ab') do |csv|
