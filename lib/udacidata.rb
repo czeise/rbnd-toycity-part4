@@ -81,4 +81,12 @@ class Udacidata
 
     brand_products.concat(name_products)
   end
+
+  def update(options = {})
+    Product.destroy(@id)
+    @brand = options[:brand] if options[:brand]
+    @name = options[:name] if options[:name]
+    @price = options[:price] if options[:price]
+    Product.create(id: @id, brand: @brand, name: @name, price: @price)
+  end
 end
