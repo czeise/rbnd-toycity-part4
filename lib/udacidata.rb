@@ -3,7 +3,7 @@ require_relative 'errors'
 require 'csv'
 
 class Udacidata
-  create_finder_methods :brand
+  create_finder_methods :brand, :name
 
   # TODO, apparently there's a better way to do this...see Walter's comment in 
   # slack.
