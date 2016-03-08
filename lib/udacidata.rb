@@ -3,6 +3,10 @@ require_relative 'errors'
 require 'csv'
 
 class Udacidata
+  create_finder_methods :brand
+
+  # TODO, apparently there's a better way to do this...see Walter's comment in 
+  # slack.
   CSV_FILE = File.dirname(__FILE__) + '/../data/data.csv'
 
   # TODO: Update method to check for existing id. See @david's comment in
