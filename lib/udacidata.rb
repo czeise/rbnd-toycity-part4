@@ -60,4 +60,25 @@ class Udacidata
       end
     end
   end
+
+  # The description of this method in the lesson:
+  #   "Product.where should return an array of Product objects that match a
+  #   given brand or product name."
+  # It seems to require only one or the other of the options to work. That felt
+  # a bit wrong, so I made the where method work with brand and name at the same
+  # time. I chose to find all products where the brand OR the name matched, not
+  # all products where both the brand AND the name matched.
+  def self.where(options = {})
+    brand_products = []
+    if options[:brand]
+      brand_products = all.select { |product| product.brand == options[:brand] }
+    end
+
+    name_products = []
+    if options[:name]
+      name_products = all.select { |product| product.name == options[:name] }
+    end
+
+    brand_products.concat(name_products)
+  end
 end
