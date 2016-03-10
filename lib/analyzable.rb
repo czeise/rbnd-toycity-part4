@@ -26,4 +26,16 @@ module Analyzable
     end
     brand_inventory
   end
+
+  def count_by_name(products)
+    product_inventory = {}
+    products.each do |product|
+      if product_inventory.key?(product.name)
+        product_inventory[product.name] += 1
+      else
+        product_inventory[product.name] = 1
+      end
+    end
+    product_inventory
+  end
 end
