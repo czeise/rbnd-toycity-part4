@@ -15,12 +15,14 @@ module Analyzable
     ""
   end
 
-  # TODO: Figure out how to get the actual count for each brand
-  # START HERE!
   def count_by_brand(products)
     brand_inventory = {}
     products.each do |product|
-      brand_inventory[product.brand] = 1
+      if brand_inventory.key?(product.brand)
+        brand_inventory[product.brand] += 1
+      else
+        brand_inventory[product.brand] = 1
+      end
     end
     brand_inventory
   end

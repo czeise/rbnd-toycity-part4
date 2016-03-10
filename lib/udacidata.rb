@@ -1,13 +1,12 @@
 require_relative 'find_by'
 require_relative 'errors'
 require 'csv'
+require 'pathname'
 
 class Udacidata
   create_finder_methods :brand, :name
 
-  # TODO, apparently there's a better way to do this...see Walter's comment in 
-  # slack.
-  CSV_FILE = File.dirname(__FILE__) + '/../data/data.csv'
+  CSV_FILE = Pathname(File.dirname(__FILE__) + '/../data/data.csv')
 
   # TODO: Update method to check for existing id. See @david's comment in
   # #toycity4, if I'd like...I can go more in depth on this to make sure it's
