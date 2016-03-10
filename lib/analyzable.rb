@@ -10,9 +10,13 @@ module Analyzable
     (total_price / num_products).round(2)
   end
 
-  # TODO: This is totally cheating!
+  # TODO: Finish this up and put it all in a single string instead of using puts
   def print_report(products)
-    ""
+    puts "Average Price: #{average_price(products)}"
+    puts 'Inventory by Brand:'
+    count_by_brand(products).each do |brand, inventory|
+      puts "  - #{brand}: #{inventory}"
+    end
   end
 
   # TODO: Consider metaprogramming the count_by_methods
