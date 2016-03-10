@@ -15,6 +15,7 @@ module Analyzable
     ""
   end
 
+  # TODO: Consider metaprogramming the count_by_methods
   def count_by_brand(products)
     brand_inventory = {}
     products.each do |product|
