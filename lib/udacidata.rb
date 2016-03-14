@@ -39,7 +39,8 @@ class Udacidata
   def self.find(id)
     product = all.find { |product| product.id == id }
     unless product
-      raise ProductNotFoundError, "Could not find a product with an ID of #{id}"
+      raise UdacidataErrors::ProductNotFoundError,
+            "Could not find a product with an ID of #{id}"
     end
     product
   end
