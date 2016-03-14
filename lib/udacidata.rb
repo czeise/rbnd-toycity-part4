@@ -11,7 +11,7 @@ class Udacidata
   # Always creates a new product object and returns it. If that object does not
   # already exist in the CSV file, it is also saved to the CSV file. Please note
   # that I check if the products ID exists to verify if the item is already in
-  # the CSV file. Additinally, I avoided using my existing `find` method to
+  # the CSV file. Additionally, I avoided using my existing `find` method to
   # prevent an error from being raised when the ID doesn't exist.
   def self.create(options = {})
     product = new(options)
