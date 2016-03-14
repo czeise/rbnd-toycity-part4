@@ -1,5 +1,11 @@
+require_relative 'count_by'
+
 module Analyzable
   # Your code goes here!
+
+  # Create count_by methods using metaprogramming
+  create_count_by_methods :brand, :name
+
   def average_price(products)
     total_price = 0
     num_products = 0
@@ -21,30 +27,5 @@ module Analyzable
       report += "  - #{product}: #{inventory}\n"
     end
     report
-  end
-
-  # TODO: Consider metaprogramming the count_by_methods
-  def count_by_brand(products)
-    brand_inventory = {}
-    products.each do |product|
-      if brand_inventory.key?(product.brand)
-        brand_inventory[product.brand] += 1
-      else
-        brand_inventory[product.brand] = 1
-      end
-    end
-    brand_inventory
-  end
-
-  def count_by_name(products)
-    product_inventory = {}
-    products.each do |product|
-      if product_inventory.key?(product.name)
-        product_inventory[product.name] += 1
-      else
-        product_inventory[product.name] = 1
-      end
-    end
-    product_inventory
   end
 end
