@@ -8,13 +8,17 @@ class Udacidata
 
   CSV_FILE = Pathname(File.dirname(__FILE__) + '/../data/data.csv')
 
-  # TODO: Update method to check for existing id. See @david's comment in
-  # #toycity4, if I'd like...I can go more in depth on this to make sure it's
-  # the same product!
+  # Always creates a new product object and returns it. If that object does not
+  # already exist in the CSV file, it is also saved to the CSV file. Please note
+  # that I check if the products ID exists to verify if the item is already in
+  # the CSV file. Additinally, I avoided using my existing `find` method to
+  # prevent an error from being raised when the ID doesn't exist.
   def self.create(options = {})
     product = new(options)
-    CSV.open(CSV_FILE, 'ab') do |csv|
-      csv << [product.id, product.brand, product.name, product.price]
+    unless all.any? { |item| item.id == product.id }
+      CSV.open(CSV_FILE, 'ab') do |csv|
+        csv << [product.id, product.brand, product.name, product.price]
+      end
     end
     product
   end
@@ -37,12 +41,12 @@ class Udacidata
   end
 
   def self.find(id)
-    product = all.find { |product| product.id == id }
-    unless product
+    result = all.find { |product| product.id == id }
+    unless result
       raise UdacidataErrors::ProductNotFoundError,
             "Could not find a product with an ID of #{id}"
     end
-    product
+    result
   end
 
   def self.destroy(id)
